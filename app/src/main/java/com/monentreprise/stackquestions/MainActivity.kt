@@ -2,8 +2,11 @@ package com.monentreprise.stackquestions
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.monentreprise.stackquestions.adapters.QuestionsAdapter
 import com.monentreprise.stackquestions.api.RetrofitClient
 import com.monentreprise.stackquestions.api.models.Questions
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Response
@@ -17,8 +20,12 @@ class MainActivity : AppCompatActivity() {
         RetrofitClient().getClient().getQuestions().enqueue(object : retrofit2.Callback<Questions>{
 
             override fun onResponse(call: Call<Questions>, response: Response<Questions>) {
-                if (response.isSuccessful)
-                    toast(response.body()?.items?.get(0)?.title.toString())
+                if (response.isSuccessful){
+
+                    val adapterQuestions = response.body()?.items?.let { QuestionsAdapter(it) }
+                    recyclerQuestions.adapter = adapterQuestions
+
+                }
                 else
                     toast("not good response")
             }
