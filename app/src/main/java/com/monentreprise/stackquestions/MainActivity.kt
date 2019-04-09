@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import com.monentreprise.stackquestions.adapters.QuestionsAdapter
 import com.monentreprise.stackquestions.api.RetrofitClient
+import com.monentreprise.stackquestions.api.models.Item
 import com.monentreprise.stackquestions.api.models.Questions
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,6 +29,13 @@ class MainActivity : AppCompatActivity() {
 
                     val adapterQuestions = response.body()?.items?.let { QuestionsAdapter(it) }
                     recyclerQuestions.adapter = adapterQuestions
+
+                    adapterQuestions?.setOnItemClickListener(object: QuestionsAdapter.OnItemClickListener{
+                        override fun onItemClick(item: Item?) {
+                            toast("Vous avez cliqué sur l'item " + (item?.questionId ?: ""))
+                        }
+
+                    })
 
                 }
                 else
