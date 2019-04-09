@@ -2,6 +2,7 @@ package com.monentreprise.stackquestions
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import com.monentreprise.stackquestions.adapters.QuestionsAdapter
 import com.monentreprise.stackquestions.api.RetrofitClient
 import com.monentreprise.stackquestions.api.models.Questions
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
                     val adapterQuestions = response.body()?.items?.let { QuestionsAdapter(it) }
                     recyclerQuestions.adapter = adapterQuestions
+                    recyclerQuestions.addItemDecoration(
+                        DividerItemDecoration(applicationContext, DividerItemDecoration.VERTICAL)
+                    )
 
                 }
                 else

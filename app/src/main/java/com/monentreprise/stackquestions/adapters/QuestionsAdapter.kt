@@ -1,6 +1,7 @@
 package com.monentreprise.stackquestions.adapters
 
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,7 @@ class QuestionsAdapter (private val items: List<Item?>) : RecyclerView.Adapter<Q
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(item: Item?) {
-            itemView.textQuestion.text = item?.title ?: ""
+            itemView.textQuestion.text = Html.fromHtml(item?.title ?: "")
             itemView.textName.text = item?.owner?.displayName
             itemView.textReputation.text = item?.owner?.reputation.toString()
             Picasso.get().load(item?.owner?.profileImage).into(itemView.imgProfil)
