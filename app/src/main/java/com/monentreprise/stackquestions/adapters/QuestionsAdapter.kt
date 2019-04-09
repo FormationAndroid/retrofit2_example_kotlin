@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.monentreprise.stackquestions.R
 import com.monentreprise.stackquestions.api.models.Item
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_question.view.*
 
 class QuestionsAdapter (private val items: List<Item?>) : RecyclerView.Adapter<QuestionsAdapter.ViewHolder>() {
@@ -22,6 +23,9 @@ class QuestionsAdapter (private val items: List<Item?>) : RecyclerView.Adapter<Q
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(item: Item?) {
             itemView.textQuestion.text = item?.title ?: ""
+            itemView.textName.text = item?.owner?.displayName
+            itemView.textReputation.text = item?.owner?.reputation.toString()
+            Picasso.get().load(item?.owner?.profileImage).into(itemView.imgProfil)
         }
     }
 
