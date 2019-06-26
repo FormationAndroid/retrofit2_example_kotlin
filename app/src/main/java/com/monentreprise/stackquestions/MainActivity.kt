@@ -20,12 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // permet de mettre un séparateur entre chaque item de notre liste
-        recyclerQuestions.addItemDecoration(
-            DividerItemDecoration(
-                applicationContext,
-                DividerItemDecoration.VERTICAL
-            )
-        )
+        recyclerQuestions.addItemDecoration(DividerItemDecoration(applicationContext, DividerItemDecoration.VERTICAL))
 
         RetrofitClient().getClient().getQuestions().enqueue(object : retrofit2.Callback<Questions>{
 

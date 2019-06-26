@@ -5,10 +5,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+const val baseUrl = "https://api.stackexchange.com/2.2/"
+
 class RetrofitClient {
 
     private var retrofit: Retrofit? = null
-    private val baseUrl = "https://api.stackexchange.com/2.2/"
 
     fun getClient(): StackService {
         if (retrofit == null) {
@@ -20,4 +21,5 @@ class RetrofitClient {
         }
         return retrofit!!.create(StackService::class.java)
     }
+
 }

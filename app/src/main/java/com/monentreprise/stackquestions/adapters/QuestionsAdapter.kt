@@ -50,8 +50,6 @@ class QuestionsAdapter (private val items: List<Item?>) : RecyclerView.Adapter<Q
         fun onItemClick(item: Item?)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount() = items.size
 
 }
