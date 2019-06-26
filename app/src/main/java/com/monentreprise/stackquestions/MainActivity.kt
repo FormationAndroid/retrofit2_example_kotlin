@@ -1,8 +1,8 @@
 package com.monentreprise.stackquestions
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.monentreprise.stackquestions.adapters.QuestionsAdapter
 import com.monentreprise.stackquestions.api.RetrofitClient
 import com.monentreprise.stackquestions.api.models.Item
@@ -20,7 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // permet de mettre un séparateur entre chaque item de notre liste
-        recyclerQuestions.addItemDecoration(DividerItemDecoration(applicationContext, DividerItemDecoration.VERTICAL))
+        recyclerQuestions.addItemDecoration(
+            DividerItemDecoration(
+                applicationContext,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         RetrofitClient().getClient().getQuestions().enqueue(object : retrofit2.Callback<Questions>{
 
