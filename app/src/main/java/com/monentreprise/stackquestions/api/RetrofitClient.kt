@@ -3,15 +3,14 @@ package com.monentreprise.stackquestions.api
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
-const val baseUrl = "https://api.stackexchange.com/2.2/"
+const val baseUrl = "https://api.github.com/"
 
 class RetrofitClient {
 
     private var retrofit: Retrofit? = null
 
-    fun getClient(): StackService {
+    fun getClient(): GithubService {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -19,7 +18,7 @@ class RetrofitClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
-        return retrofit!!.create(StackService::class.java)
+        return retrofit!!.create(GithubService::class.java)
     }
 
 }
