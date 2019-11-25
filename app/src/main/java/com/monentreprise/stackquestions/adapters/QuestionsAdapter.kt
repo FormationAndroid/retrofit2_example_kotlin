@@ -27,10 +27,10 @@ class QuestionsAdapter (private val items: List<Item?>) : RecyclerView.Adapter<Q
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var txtQuestion: TextView = itemView.textQuestion
-        var txtName: TextView = itemView.textName
-        var txtReputation: TextView = itemView.textReputation
-        var imgProfil: ImageView = itemView.imgProfil
+        private var txtQuestion: TextView = itemView.textQuestion
+        private var txtName: TextView = itemView.textName
+        private var txtReputation: TextView = itemView.textReputation
+        private var imgProfil: ImageView = itemView.imgProfil
 
         fun bindItems(item: Item?) {
             txtQuestion.text = Html.fromHtml(item?.title ?: "")
